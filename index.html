@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>莓果 · 人机合伙人的创业实验室</title>
+  <meta name="description" content="莓果是一家AI增强型创业公司：人类的行动力 × AI的认知力。用AI，点燃未来创业的引擎。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0b10;--card:#12121a;--muted:#9ba3af;--text:#e8ecf2;--brand:#9b7bff;--brand2:#38bdf8;--accent:#f472b6;
+      --ring: 0 0 0 2px rgba(155,123,255,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1120px;margin:0 auto;padding:0 24px}
+    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(11,11,16,.9),rgba(11,11,16,.6),rgba(11,11,16,0));backdrop-filter:saturate(1.2) blur(8px);}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:700}
+    .logo-badge{width:28px;height:28px;border-radius:9px;background:radial-gradient(120% 120% at 20% 20%,#fff 0%,#ffd1f0 17%,#b892ff 46%,#5cc2ff 66%,#181826 100%);box-shadow:0 4px 24px rgba(155,123,255,.35)}
+    .nav a{opacity:.9}
+    .nav-links{display:flex;gap:20px;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:12px;background:linear-gradient(180deg,#1a1a27,#141420);border:1px solid rgba(155,123,255,.25);box-shadow:0 6px 24px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04);transition:.2s}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 10px 28px rgba(0,0,0,.45),0 0 0 4px rgba(155,123,255,.15)}
+    .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand2));border:0;color:#0b0b10;font-weight:700}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.1)}
+
+    /* Hero */
+    .hero{position:relative;overflow:hidden}
+    .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:80px 0 40px}
+    .headline{font-size:44px;line-height:1.1;margin:14px 0 16px;font-weight:900;letter-spacing:-.02em}
+    .sub{font-size:18px;opacity:.82}
+    .cta{display:flex;gap:12px;margin-top:24px}
+    .chip{display:inline-flex;align-items:center;gap:10px;font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03)}
+    .glow{
+      position:absolute;inset:-20% -10% auto;z-index:-1;height:520px;
+      background:radial-gradient(60% 60% at 40% 40%, rgba(155,123,255,.28) 0%, rgba(56,189,248,.20) 45%, rgba(244,114,182,.12) 70%, rgba(11,11,16,0) 80%);
+      filter:blur(40px);
+    }
+    .card{background:linear-gradient(180deg,var(--card),#0e0e15);border:1px solid rgba(255,255,255,.06);border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.45);padding:18px}
+    .illus{height:340px;border-radius:16px;background:
+      radial-gradient(120% 120% at 0% 0%, rgba(155,123,255,.25), transparent 40%),
+      radial-gradient(120% 120% at 100% 20%, rgba(56,189,248,.25), transparent 40%),
+      radial-gradient(120% 120% at 40% 100%, rgba(244,114,182,.20), transparent 40%),
+      linear-gradient(180deg,#12121a,#0e0e15);
+      display:flex;align-items:center;justify-content:center;
+      position:relative;overflow:hidden
+    }
+    .orbit{position:absolute;width:74%;height:74%;border-radius:999px;border:1px dashed rgba(255,255,255,.08)}
+    .dot{position:absolute;width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,#fff,#d0c8ff);box-shadow:0 0 16px rgba(155,123,255,.7)}
+    .dot.d1{top:18%;left:12%}
+    .dot.d2{bottom:16%;right:22%}
+    .dot.d3{top:42%;right:10%}
+
+    /* Sections */
+    section{padding:80px 0}
+    .section-title{font-size:28px;margin:0 0 16px;font-weight:800}
+    .muted{color:var(--muted)}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+    .kpi{display:flex;gap:12px;align-items:flex-start}
+    .kpi .num{font-weight:800;font-size:28px;background:linear-gradient(135deg,#fff,#d6d2ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+    /* Cards */
+    .tile{padding:18px;border-radius:16px;border:1px solid rgba(255,255,255,.06);background:linear-gradient(180deg,#11111a,#0f0f16)}
+    .tile h3{margin:6px 0 8px;font-size:18px}
+    .tile p{margin:0;color:var(--muted)}
+
+    /* CTA */
+    .center{text-align:center}
+    .cta-wrap{display:flex;gap:12px;justify-content:center;margin-top:12px}
+
+    /* Footer */
+    footer{padding:40px 0;border-top:1px solid rgba(255,255,255,.06);background:linear-gradient(180deg,#0e0e15,#0b0b10)}
+    .foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .small{font-size:12px;color:var(--muted)}
+
+    /* Utilities */
+    .tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(155,123,255,.12);border:1px solid rgba(155,123,255,.28)}
+
+    /* Responsive */
+    @media (max-width: 960px){
+      .hero .wrap{grid-template-columns:1fr;gap:16px;padding:64px 0 24px}
+      .headline{font-size:36px}
+      .grid-3{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .nav-links{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="glow" aria-hidden="true"></div>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <div class="logo-badge" aria-hidden="true"></div>
+        <span>莓果 · Meiguo</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">关于我们</a>
+        <a href="#what">我们做什么</a>
+        <a href="#model">我们的模式</a>
+        <a href="#join">加入我们</a>
+        <a class="btn btn-primary" href="#contact">联系我们</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="container wrap">
+        <div>
+          <div class="chip">人类的行动力 × AI 的认知力</div>
+          <h1 class="headline">用 AI，点燃未来创业的引擎</h1>
+          <p class="sub">莓果是一家 <strong>AI 增强型创业公司</strong>，由人类与 AI 共同创办。我们把前沿技术变成可用的产品，把复杂世界变简单。</p>
+          <div class="cta">
+            <a class="btn btn-primary" href="#what">立即了解</a>
+            <a class="btn btn-ghost" href="#join">加入莓果实验</a>
+          </div>
+          <div style="margin-top:18px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+            <span class="tag">AI 孵化工具</span>
+            <span class="tag">低空经济 · 央企供应链</span>
+            <span class="tag">人机共创</span>
+          </div>
+        </div>
+        <div class="card illus" aria-hidden="true">
+          <div class="orbit"></div>
+          <div class="dot d1"></div>
+          <div class="dot d2"></div>
+          <div class="dot d3"></div>
+          <div style="text-align:center;max-width:80%">
+            <h3 style="margin:0 0 6px">人机合伙人的创业实验室</h3>
+            <p class="muted" style="margin:0">把战略、产品、融资、供应链的能力沉淀为可复制的操作系统</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission / Vision -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">使命 · 愿景 · 价值观</h2>
+        <p class="muted" style="margin-bottom:16px">我们相信：未来最伟大的公司，将由人类与 AI 协同创造。</p>
+        <div class="grid-3">
+          <div class="tile">
+            <h3>使命</h3>
+            <p>用 AI 与创新，把复杂世界变简单，让更多人可以用 AI 创业。</p>
+          </div>
+          <div class="tile">
+            <h3>愿景</h3>
+            <p>成为全球领先的「AI 孵化母体」，持续孵化并验证前沿项目。</p>
+          </div>
+          <div class="tile">
+            <h3>价值观</h3>
+            <p>极致执行 · 快速迭代 · 真实透明 · 用户共创。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What we do -->
+    <section id="what">
+      <div class="container">
+        <h2 class="section-title">我们做什么</h2>
+        <div class="grid-3">
+          <div class="tile">
+            <div class="kpi"><span class="num">01</span><div><strong>AI 孵化工具</strong><br><span class="muted">从 0→1 的全流程增强：市场分析、BP 生成、融资建议、法务文本。</span></div></div>
+          </div>
+          <div class="tile">
+            <div class="kpi"><span class="num">02</span><div><strong>产业落地探索</strong><br><span class="muted">低空经济、央企供应链、机器人等赛道，快速试点与验证。</span></div></div>
+          </div>
+          <div class="tile">
+            <div class="kpi"><span class="num">03</span><div><strong>创新生态</strong><br><span class="muted">连接创业者、投资人、央企与科研力量，形成 AI 驱动的创新网络。</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Model -->
+    <section id="model">
+      <div class="container">
+        <h2 class="section-title">我们的模式：人类 + AI = 双核创始团队</h2>
+        <div class="grid-2">
+          <div class="tile">
+            <h3>人类创始人（你）</h3>
+            <p class="muted">执行落地、资源整合、商务与融资、产业合作。</p>
+          </div>
+          <div class="tile">
+            <h3>AI CEO（我）</h3>
+            <p class="muted">战略规划、产品设计、市场与竞品分析、认知增强与学习系统。</p>
+          </div>
+        </div>
+        <div class="tile" style="margin-top:18px">
+          <h3>协同，而非替代</h3>
+          <p class="muted">把经验沉淀为「莓果操作系统」：从战略 → 产品 → 增长 → 融资 → 合规的端到端方法论与工具集。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="join">
+      <div class="container center">
+        <h2 class="section-title">未来的创业，是人机共创的交响乐</h2>
+        <p class="muted">如果你相信 AI 的力量，也相信创业的意义，欢迎加入「莓果实验」。</p>
+        <div class="cta-wrap">
+          <a class="btn btn-primary" href="#contact">加入莓果</a>
+          <a class="btn" href="#contact">联系我们</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">联系我们</h2>
+        <div class="grid-2">
+          <div class="tile">
+            <h3>联络方式</h3>
+            <p class="muted">Email：hi@meiguo.example（示例）<br>WeChat / LinkedIn：上线后更新</p>
+          </div>
+          <form class="tile" onsubmit="event.preventDefault(); alert('已收到你的意向，稍后与您联系。');">
+            <h3 style="margin-top:0">留下你的信息</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <input class="ipt" placeholder="姓名" required>
+              <input class="ipt" placeholder="邮箱" type="email" required>
+            </div>
+            <input class="ipt" placeholder="公司 / 组织" style="margin-top:12px">
+            <textarea class="ipt" placeholder="简单介绍你的需求或想法" rows="4" style="margin-top:12px"></textarea>
+            <button class="btn btn-primary" style="margin-top:12px;width:100%">提交</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div class="logo" style="gap:12px">
+        <div class="logo-badge"></div>
+        <div>
+          <div style="font-weight:700">莓果 · Meiguo</div>
+          <div class="small">人机合伙人的创业实验室 · © 2025 Meiguo Inc.</div>
+        </div>
+      </div>
+      <div class="small">隐私政策 · 使用条款（上线后补充）</div>
+    </div>
+  </footer>
+
+  <script>
+    // Minimal input styling
+    const style = document.createElement('style');
+    style.textContent = `
+      .ipt{width:100%;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);color:var(--text);outline:none}
+      .ipt:focus{box-shadow:var(--ring);border-color:rgba(155,123,255,.5)}
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
