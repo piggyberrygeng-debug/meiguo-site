@@ -1,0 +1,11 @@
+# 根目录存在 index.html 的最简配置
+[build]
+  command = ""       # 无需构建
+  publish = "."      # 发布仓库根目录
+
+# 可选：若是单页应用/前端路由需要兜底到 index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+chore: add netlify.toml
